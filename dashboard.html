@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Dashboard</title>
+    <style>
+        /* Basic reset and styles */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    line-height: 1.6;
+    background-color: #f4f4f4;
+}
+
+.container {
+    max-width: 800px;
+    margin: 20px auto;
+    padding: 20px;
+    background-color: #fff;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+h2, h3 {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+#project-list ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+#project-list ul li {
+    margin-bottom: 10px;
+}
+
+a {
+    text-decoration: none;
+    color: #007bff;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+#project-details {
+    margin-top: 20px;
+}
+
+    
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Student Dashboard</h2>
+        <div id="project-list">
+            <h3>Available Project Topics:</h3>
+            <ul>
+                <li><a href="#" onclick="selectProject('project1')">Project Topic 1</a></li>
+                <li><a href="#" onclick="selectProject('project2')">Project Topic 2</a></li>
+                <li><a href="#" onclick="selectProject('project3')">Project Topic 3</a></li>
+                <!-- Add more project topics as necessary -->
+            </ul>
+        </div>
+    </div>
+
+    <script>
+        function selectProject(project) {
+            // Example: Disable selection (You can implement backend logic here to store the selection)
+            localStorage.setItem('selectedProject', project); // Store selected project in localStorage
+            alert(`You have selected ${project}. You will be redirected to the Project Dashboard.`);
+            window.location.href = `project_dashboard.html?project=${project}`; // Redirect to project dashboard
+        }
+
+        // Check if a project is already selected and redirect if necessary
+        document.addEventListener('DOMContentLoaded', function() {
+            var selectedProject = localStorage.getItem('selectedProject');
+            if (selectedProject) {
+                alert(`You have already selected ${selectedProject}. Redirecting to the Project Dashboard.`);
+                window.location.href = `project_dashboard.html?project=${selectedProject}`;
+            }
+        });
+    </script>
+</body>
+</html>

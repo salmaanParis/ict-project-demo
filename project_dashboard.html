@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Project Dashboard</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<style>
+    /* Basic reset and styles */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    line-height: 1.6;
+    background-color: #f4f4f4;
+}
+
+.container {
+    max-width: 800px;
+    margin: 20px auto;
+    padding: 20px;
+    background-color: #fff;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+h2, h3 {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+#project-list ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+#project-list ul li {
+    margin-bottom: 10px;
+}
+
+a {
+    text-decoration: none;
+    color: #007bff;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+#project-details {
+    margin-top: 20px;
+}
+
+</style>
+<body>
+    <header>
+        <h1>Project Dashboard</h1>
+    </header>
+    <div class="container">
+        <h2>Project Dashboard</h2>
+        <div id="project-details">
+            <!-- Project details will be dynamically loaded here -->
+        </div>
+    </div>
+    <main>
+        <section id="project-overview">
+            <h2>Project Overview Document</h2>
+            <p>Detailed documentation of the project in PDF or document format.</p>
+            <a href="path_to_project_overview_document.pdf" target="_blank">Download Project Overview</a>
+        </section>
+
+        <section id="reference-materials">
+            <h2>Reference Materials</h2>
+            <p>Categorized by week:</p>
+            <ul>
+                <li>Week 1: <a href="#">Link to Week 1 Materials</a></li>
+                <li>Week 2: <a href="#">Link to Week 2 Materials</a></li>
+                <!-- Add more weeks as necessary -->
+            </ul>
+        </section>
+
+        <section id="weekly-submission">
+            <h2>Weekly Submission</h2>
+            <p>Submission format and link:</p>
+            <p>Submission link will be active at the end of each week.</p>
+        </section>
+
+        <section id="final-project-report">
+            <h2>Final Project Report Submission</h2>
+            <p>Submission format and link:</p>
+            <p>Submission link will be active in the last week of submission.</p>
+        </section>
+
+        <section id="viva-voce">
+            <h2>Viva Voce</h2>
+            <p>Format and submission link:</p>
+            <p>Submission link will be active after final project report submission.</p>
+        </section>
+
+        <section id="discussion-forum">
+            <h2>Discussion Forum</h2>
+            <p>Post queries, discuss project-related issues:</p>
+            <div id="forum">
+                <!-- Discussion posts dynamically added using JavaScript -->
+            </div>
+            <form id="forum-form">
+                <textarea id="query" placeholder="Type your query here"></textarea>
+                <button type="submit">Post Query</button>
+            </form>
+        </section>
+    </main>
+    <footer>
+        <p>&copy; 2024 Project Dashboard</p>
+    </footer>
+
+    <!-- Additional code for dynamically loading project details -->
+   
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            var urlParams = new URLSearchParams(window.location.search);
+            var project = urlParams.get('project');
+
+            if (project) {
+                // Example: Display project details based on selected project
+                var projectDetails = getProjectDetails(project); // Implement a function to fetch project details
+
+                // Display project details
+                var projectDetailsContainer = document.getElementById('project-details');
+                projectDetailsContainer.innerHTML = `<h3>${projectDetails.title}</h3>
+                                                    <p>${projectDetails.description}</p>
+                                                    <p><strong>Mentor:</strong> ${projectDetails.mentor}</p>`;
+                
+                // Example: Disable project selection after selection
+                localStorage.setItem('selectedProject', project); // Store selected project in localStorage
+            } else {
+                alert('No project selected. Redirecting to Student Dashboard.');
+                window.location.href = 'dashboard.html'; // Redirect back to dashboard if no project is selected
+            }
+        });
+
+        // Function to fetch project details (Replace with actual backend API call or hardcoded data)
+        function getProjectDetails(project) {
+            var projectDetails = {
+                project1: {
+                    title: 'Project Topic 1',
+                    description: 'Details about Project Topic 1.',
+                    mentor: 'John Doe'
+                },
+                project2: {
+                    title: 'Project Topic 2',
+                    description: 'Details about Project Topic 2.',
+                    mentor: 'Jane Smith'
+                },
+                project3: {
+                    title: 'Project Topic 3',
+                    description: 'Details about Project Topic 3.',
+                    mentor: 'Alan Johnson'
+                }
+                // Add more projects as necessary
+            };
+
+            return projectDetails[project];
+        }
+    </script>
+</body>
+</html>
